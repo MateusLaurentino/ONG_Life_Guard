@@ -1,0 +1,171 @@
+/* css/global.css */
+:root {
+    /* Cores */
+    --color-primary-500: #0056b3;
+    --color-primary-300: #3385ff;
+    --color-secondary-500: #ff9800;
+    --color-neutral-900: #212529;
+    --color-neutral-600: #6c757d;
+    --color-neutral-200: #e9ecef;
+    --color-neutral-100: #f8f9fa;
+    --color-white: #ffffff;
+    --color-danger-500: #dc3545;
+
+    /* Tipografia */
+    --font-family-base: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 2rem;
+
+    /* Espaçamentos */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+}
+
+/* Reset e Body */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+    line-height: 1.6;
+}
+
+h1 { font-size: var(--font-size-xl); color: var(--color-primary-500); margin-bottom: var(--space-md); }
+h2 { font-size: var(--font-size-lg); color: var(--color-primary-500); margin-bottom: var(--space-sm); }
+p, li, address { font-size: var(--font-size-md); margin-bottom: var(--space-md); }
+
+/* Header e Nav */
+header {
+    background-color: var(--color-white);
+    padding: var(--space-md) var(--space-xl);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+nav ul { display: flex; gap: var(--space-md); list-style: none; flex-wrap: wrap; }
+nav a { text-decoration: none; color: var(--color-neutral-600); font-weight: bold; transition: color 0.3s ease; }
+nav a:hover { color: var(--color-primary-500); }
+
+/* =========================================
+   SISTEMA DE GRID (12 COLUNAS) - MOBILE FIRST
+   ========================================= */
+main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12 Colunas rigorosas */
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+section, form {
+    grid-column: span 12; /* No celular, tudo ocupa as 12 colunas (largura total) */
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-neutral-900);
+    color: var(--color-white);
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+/* =========================================
+   OS 5 BREAKPOINTS (PONTOS DE QUEBRA)
+   ========================================= */
+
+/* 1. Mobile Horizontal */
+@media (min-width: 576px) {
+    main { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* 2. Tablets */
+@media (min-width: 768px) {
+    main { max-width: 720px; }
+}
+
+/* 3. Laptops / Desktops menores */
+@media (min-width: 992px) {
+    main { max-width: 960px; gap: var(--space-xl); }
+}
+
+/* 4. Monitores de Desktop */
+@media (min-width: 1200px) {
+    main { max-width: 1140px; }
+}
+
+/* 5. Monitores Panorâmicos (Ultrawide) */
+@media (min-width: 1400px) {
+    main { max-width: 1320px; }
+}
+
+/* =========================================
+   CONTROLE DE VISIBILIDADE PARA FEEDBACKS
+   ========================================= */
+
+/* Estado padrão: Escondido */
+.escondido {
+    display: none !important;
+}
+
+/* Estado ativo: Visível */
+.ativo {
+    display: block !important;
+}
+
+/* 1. Badges (Crachás / Etiquetas) */
+.badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 12px;
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    color: var(--color-white);
+    margin-left: var(--space-xs);
+}
+.badge-azul { background-color: var(--color-primary-500); }
+.badge-laranja { background-color: var(--color-secondary-500); }
+.badge-vermelho { background-color: var(--color-danger-500); }
+
+/* 2. Caixas de Alerta */
+.alerta {
+    padding: var(--space-md);
+    border-radius: 4px;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+}
+.alerta-sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alerta-erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* 3. Toast (Notificação Flutuante) */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-neutral-900);
+    color: var(--color-white);
+    padding: var(--space-md);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-left: 5px solid var(--color-primary-300);
+    font-size: var(--font-size-sm);
+    z-index: 1000;
+}

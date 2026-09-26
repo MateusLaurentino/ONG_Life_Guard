@@ -1,0 +1,35 @@
+/* css/index.css */
+section {
+    background-color: var(--color-white);
+    padding: var(--space-xl);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.imagem-destaque {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: var(--space-md);
+}
+
+#contato address ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    list-style: none;
+    margin-top: var(--space-md);
+}
+
+#contato a { color: var(--color-primary-500); text-decoration: none; }
+#contato a:hover { text-decoration: underline; }
+
+/* Adaptação com Breakpoint 3 (Notebooks) */
+@media (min-width: 992px) {
+    #apresentacao {
+        grid-column: span 7; /* Ocupa 7 das 12 colunas */
+    }
+    #contato {
+        grid-column: span 5; /* Ocupa 5 das 12 colunas */
+    }
+}
